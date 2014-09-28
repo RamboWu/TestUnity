@@ -4,9 +4,12 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 
 	public float speed = 1000;
+	public GUIText text;
+	private int count = 0;
+
 	// Use this for initialization
 	void Start () {
-	
+		displayText ();
 	}
 	
 	// Update is called once per frame
@@ -24,10 +27,17 @@ public class PlayerController : MonoBehaviour {
 	{
 		if (other.gameObject.tag == "PickUp")
 		{
+			count ++;
+			displayText();
 			Destroy (other.gameObject);
 		}
 
 		Debug.Log ("PlayerController::OnTriggerEntered");
+	}
+
+	void displayText()
+	{
+		text.text = "Count: " + count.ToString ();
 	}
 
 }
