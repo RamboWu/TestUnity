@@ -8,4 +8,9 @@ public class PickUpController : MonoBehaviour
 	void Update () {
 		transform.Rotate (new Vector3 (45, 45, 45) * Time.deltaTime);
 	}
+
+	void OnTriggerEnter(Collider other)
+	{
+		Debug.Log ("PickUpController::OnTriggerEntered");
+	}
 }

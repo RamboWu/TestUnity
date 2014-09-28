@@ -17,5 +17,17 @@ public class PlayerController : MonoBehaviour {
 		rigidbody.AddForce(
 			new Vector3(horizontal_move*speed*Time.deltaTime,0.0f,vertical_move*speed*Time.deltaTime)
 			);
+
 	}
+
+	void OnTriggerEnter(Collider other)
+	{
+		if (other.gameObject.tag == "PickUp")
+		{
+			Destroy (other.gameObject);
+		}
+
+		Debug.Log ("PlayerController::OnTriggerEntered");
+	}
+
 }
