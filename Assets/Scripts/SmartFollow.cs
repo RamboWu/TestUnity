@@ -23,7 +23,8 @@ public class SmartFollow : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		transform.position = target.transform.position; 
-		transform.rotation = target.transform.rotation; 
+		transform.eulerAngles = new Vector3(30.0f ,transform.eulerAngles.y , 0 ); 
+		//transform.rotation = target.transform.rotation; 
 	}
 	
 	// Update is called once per frame
