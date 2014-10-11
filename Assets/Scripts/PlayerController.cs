@@ -14,12 +14,15 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		float horizontal_move = Input.GetAxis("Horizontal");
-		float vertical_move = Input.GetAxis("Vertical");
+		if (networkView.isMine){
 
-		rigidbody.AddForce(
-			new Vector3(horizontal_move*speed*Time.deltaTime,0.0f,vertical_move*speed*Time.deltaTime)
-			);
+			float horizontal_move = Input.GetAxis("Horizontal");
+			float vertical_move = Input.GetAxis("Vertical");
+
+			rigidbody.AddForce(
+				new Vector3(horizontal_move,0.0f,vertical_move)*speed*Time.deltaTime
+				);
+		}
 
 	}
 
@@ -37,7 +40,8 @@ public class PlayerController : MonoBehaviour {
 
 	void displayText()
 	{
-		text.text = "Count: " + count.ToString ();
+		if (text != null)
+			text.text = "Count: " + count.ToString ();
 	}
 
 }

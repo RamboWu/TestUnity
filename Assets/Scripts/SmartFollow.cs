@@ -6,13 +6,13 @@ public class SmartFollow : MonoBehaviour {
 	//相机面对的物体,角色 
 	public GameObject 	target;
 	// 设置离人物最远距离.本来想想设个最小距离,但想想wow最近就是第一人称,距离为0.就没设. 
-	public float 		MaxDistance = -20f;
+	public float 		MaxDistance = -15f;
 	// 是否开始相机碰撞检测, 就是当相机碰到墙,树等物体时是否自动调节位置.
 	public bool 		bOpenRay = false;
 	// 滚轮拉近 镜头与人物之间距离的速度. 
 	public float 		ScrollKeySpeed = 100.0f;
 	// 控制相机与人物之间的距离,不能大于 MaxDistance 
-	private float 		m_the_distance = -20f;
+	private float 		m_the_distance = -15f;
 	// 当碰撞发生后, 将使用这个值来设定相机距离, 
 	private float 		HitDistance = 0.0f; 
 	// 相机是否碰撞了
@@ -29,7 +29,7 @@ public class SmartFollow : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+
 	}
 
 	void LateUpdate() 
@@ -51,7 +51,7 @@ public class SmartFollow : MonoBehaviour {
 		
 		float tmpY; 
 		//当按下鼠标右键,以人物为中心,旋转相机. 
-		if(!Input.GetKey(KeyCode.Mouse1) && Input.GetKey(KeyCode.Mouse0)) 
+		if(Input.GetKey(KeyCode.Mouse1) && !Input.GetKey(KeyCode.Mouse0)) 
 		{ 
 			transform.position = target.transform.position; 
 			// 乘 -1 是因为上下移动的习惯,鼠标下拉,镜头是往上走还是往下走. 个人喜好. 可以设个公有变量来调节. 
